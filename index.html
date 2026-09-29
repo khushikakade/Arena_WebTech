@@ -1,0 +1,352 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Neon Arena</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="game">
+
+    <!-- =========================
+         TOP HUD
+    ========================== -->
+
+    <header class="hud">
+
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+
+            <div>
+                <h1>NEON ARENA</h1>
+                <span>SURVIVAL PROTOCOL</span>
+            </div>
+        </div>
+
+        <div class="hud-stats">
+
+            <div class="stat">
+                <span>WAVE</span>
+                <strong id="wave">1</strong>
+            </div>
+
+            <div class="stat">
+                <span>SCORE</span>
+                <strong id="score">000000</strong>
+            </div>
+
+            <div class="stat">
+                <span>COINS</span>
+                <strong id="coins">0</strong>
+            </div>
+
+        </div>
+
+        <button id="pauseButton" class="pause-btn">
+            II
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         GAME AREA
+    ========================== -->
+
+    <main class="game-wrapper">
+
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- CENTER MESSAGE -->
+
+        <div id="waveMessage" class="wave-message">
+            <div class="small">WAVE</div>
+            <div id="waveNumber">1</div>
+            <div id="waveDescription">
+                HOSTILES INCOMING
+            </div>
+        </div>
+
+
+        <!-- =========================
+             PLAYER HUD
+        ========================== -->
+
+        <div class="player-hud">
+
+            <div class="health-section">
+
+                <div class="hud-label">
+                    <span>HP</span>
+                    <span id="healthText">100 / 100</span>
+                </div>
+
+                <div class="health-bar">
+                    <div id="healthFill"></div>
+                </div>
+
+            </div>
+
+
+            <div class="shield-section">
+
+                <div class="hud-label">
+                    <span>SHIELD</span>
+                    <span id="shieldText">0</span>
+                </div>
+
+                <div class="shield-bar">
+                    <div id="shieldFill"></div>
+                </div>
+
+            </div>
+
+
+            <div class="dash-section">
+
+                <div class="hud-label">
+                    <span>DASH</span>
+                    <span id="dashText">READY</span>
+                </div>
+
+                <div class="dash-bar">
+                    <div id="dashFill"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             WEAPON HUD
+        ========================== -->
+
+        <div class="weapon-hud">
+
+            <div class="weapon-icon">
+                ⚡
+            </div>
+
+            <div>
+
+                <span class="weapon-label">
+                    PLASMA RIFLE
+                </span>
+
+                <strong id="weaponLevel">
+                    LV. 1
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             BOSS BAR
+        ========================== -->
+
+        <div id="bossContainer" class="boss-container hidden">
+
+            <div class="boss-title">
+                ⚠ WARNING — ELITE TARGET
+            </div>
+
+            <div class="boss-name">
+                OMEGA SENTINEL
+            </div>
+
+            <div class="boss-bar">
+                <div id="bossFill"></div>
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MINIMAP
+        ========================== -->
+
+        <div class="minimap">
+
+            <div class="map-title">
+                ARENA
+            </div>
+
+            <div id="miniPlayer" class="mini-player"></div>
+
+            <div id="miniEnemies"></div>
+
+        </div>
+
+
+        <!-- =========================
+             START SCREEN
+        ========================== -->
+
+        <section id="startScreen" class="screen">
+
+            <div class="screen-card">
+
+                <div class="logo-symbol">
+                    ✦
+                </div>
+
+                <p class="eyebrow">
+                    SYSTEM ONLINE
+                </p>
+
+                <h2>
+                    NEON<br>
+                    <span>ARENA</span>
+                </h2>
+
+                <p class="description">
+                    Survive the waves. Upgrade your weapon.
+                    Destroy the elite targets.
+                </p>
+
+                <button id="startButton" class="primary-btn">
+                    ENTER ARENA
+                </button>
+
+                <div class="controls">
+
+                    <div>
+                        <kbd>W A S D</kbd>
+                        <span>MOVE</span>
+                    </div>
+
+                    <div>
+                        <kbd>CLICK</kbd>
+                        <span>SHOOT</span>
+                    </div>
+
+                    <div>
+                        <kbd>SPACE</kbd>
+                        <span>DASH</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PAUSE SCREEN
+        ========================== -->
+
+        <section id="pauseScreen" class="screen hidden">
+
+            <div class="screen-card">
+
+                <p class="eyebrow">
+                    SYSTEM PAUSED
+                </p>
+
+                <h2>
+                    PAUSED
+                </h2>
+
+                <p class="description">
+                    The arena is waiting.
+                </p>
+
+                <button id="resumeButton" class="primary-btn">
+                    RESUME
+                </button>
+
+                <button id="pauseRestartButton" class="secondary-btn">
+                    RESTART
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             GAME OVER
+        ========================== -->
+
+        <section id="gameOverScreen" class="screen hidden">
+
+            <div class="screen-card">
+
+                <p class="eyebrow">
+                    MISSION TERMINATED
+                </p>
+
+                <h2>
+                    GAME<br>
+                    <span>OVER</span>
+                </h2>
+
+                <div class="final-stats">
+
+                    <div>
+                        <span>SCORE</span>
+                        <strong id="finalScore">
+                            0
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>WAVE</span>
+                        <strong id="finalWave">
+                            1
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>BEST</span>
+                        <strong id="bestScore">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+                <button id="restartButton" class="primary-btn">
+                    PLAY AGAIN
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <span>
+            NEON ARENA v1.0
+        </span>
+
+        <span>
+            WAVE SURVIVAL PROTOCOL
+        </span>
+
+        <span>
+            <kbd>P</kbd> PAUSE
+        </span>
+
+    </footer>
+
+</div>
+
+<script src="game.js"></script>
+
+</body>
+</html>
+```
