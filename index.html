@@ -239,7 +239,53 @@
             </div>
 
         </section>
+<div class="screen-content">
 
+    <div class="screen-stripe"></div>
+
+    <div class="eyebrow">
+        WEB TECHNOLOGY // ARENA 01
+    </div>
+
+    <h1 class="game-title">
+        Arena
+        <span>Survivor</span>
+    </h1>
+
+    <p class="game-subtitle">
+        Survive the waves. Read the arena. 
+        Keep moving. Build your score.
+    </p>
+
+    <button id="startButton" class="primary-button">
+        Enter Arena
+    </button>
+
+    <div class="controls">
+
+        <div class="control-chip">
+            <strong>WASD</strong> Move
+        </div>
+
+        <div class="control-chip">
+            <strong>MOUSE</strong> Aim
+        </div>
+
+        <div class="control-chip">
+            <strong>CLICK</strong> Fire
+        </div>
+
+        <div class="control-chip">
+            <strong>SPACE</strong> Dash
+        </div>
+
+        <div class="control-chip">
+            <strong>P</strong> Pause
+        </div>
+
+    </div>
+
+</div>
 
         <!-- =========================
              PAUSE SCREEN
@@ -273,7 +319,31 @@
 
         </section>
 
+<div class="screen-content">
 
+    <div class="eyebrow">
+        GAME STATUS
+    </div>
+
+    <h2 class="pause-title">
+        Paused
+    </h2>
+
+    <p class="game-subtitle">
+        The arena is waiting.
+    </p>
+
+    <button
+        id="resumeButton"
+        class="primary-button">
+        Resume
+    </button>
+
+    <div class="pause-hint">
+        Press P or ESC to resume
+    </div>
+
+</div>
         <!-- =========================
              GAME OVER
         ========================== -->
@@ -321,7 +391,71 @@
                 </button>
 
             </div>
+<div class="screen-content">
 
+    <div class="eyebrow">
+        RUN COMPLETE
+    </div>
+
+    <h2 class="gameover-title">
+        Game Over
+    </h2>
+
+    <div class="score-summary">
+
+        <div class="summary-item">
+            <span class="summary-label">
+                Score
+            </span>
+
+            <span
+                id="finalScore"
+                class="summary-value">
+                0
+            </span>
+        </div>
+
+        <div class="summary-item">
+            <span class="summary-label">
+                Wave
+            </span>
+
+            <span
+                id="finalWave"
+                class="summary-value">
+                0
+            </span>
+        </div>
+
+        <div class="summary-item">
+            <span class="summary-label">
+                Best
+            </span>
+
+            <span
+                id="bestScore"
+                class="summary-value">
+                0
+            </span>
+        </div>
+
+    </div>
+
+    <div class="screen-actions">
+
+        <button
+            id="restartButton"
+            class="primary-button">
+            Play Again
+        </button>
+
+    </div>
+
+    <div class="pause-hint">
+        Press R to restart
+    </div>
+
+</div>
         </section>
 
     </main>

@@ -1,8 +1,47 @@
-
-/* =========================================
+/* =========================================================
    NEON ARENA
-   MAIN STYLESHEET
-========================================= */
+   RETRO PRINT / WARM ARCADE THEME
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+    --ink: #171613;
+    --ink-soft: #24221d;
+    --ink-light: #302d26;
+
+    --cream: #f4ead4;
+    --cream-soft: #e6d8bc;
+
+    --terracotta: #d9653b;
+    --terracotta-dark: #a8452b;
+
+    --rust: #9e3f32;
+    --rust-dark: #712d27;
+
+    --mustard: #d5a62a;
+    --mustard-dark: #9b7419;
+
+    --olive: #7c8a45;
+    --olive-dark: #596331;
+
+    --slate: #60717a;
+    --slate-dark: #3f4b50;
+
+    --border: #0e0d0b;
+
+    --shadow: rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -10,938 +49,591 @@
     padding: 0;
 }
 
-:root {
-
-    --bg: #05070d;
-    --panel: #0b0f19;
-    --panel2: #101624;
-
-    --cyan: #4df6ff;
-    --purple: #9c6cff;
-    --pink: #ff4f91;
-    --green: #5dff9b;
-    --yellow: #ffd166;
-    --red: #ff5364;
-
-    --text: #f2f5ff;
-    --muted: #7d879d;
-
-    --border: rgba(255,255,255,0.08);
-
-}
 
 html,
 body {
-
     width: 100%;
-    min-height: 100%;
-
+    height: 100%;
 }
 
+
 body {
+    overflow: hidden;
 
     background:
         radial-gradient(
-            circle at 50% 0%,
-            #17162e 0%,
-            #080a12 35%,
-            #03050a 100%
+            circle at 50% 40%,
+            #302d26 0%,
+            #1e1c18 45%,
+            #12110f 100%
         );
 
-    color: var(--text);
+    color: var(--cream);
 
     font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
+        "Space Grotesk",
+        Arial,
         sans-serif;
-
-    overflow-x: hidden;
-
 }
 
 
-/* =========================================
-   GAME CONTAINER
-========================================= */
-
-#game {
-
-    width: min(1200px, 96vw);
-
-    margin: 25px auto;
-
-}
-
-
-/* =========================================
-   HEADER
-========================================= */
-
-.hud {
-
-    min-height: 75px;
-
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        auto
-        1fr;
-
-    align-items: center;
-
-    gap: 20px;
-
-    padding: 12px 18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(15,20,33,.96),
-            rgba(7,10,18,.96)
-        );
-
-    border: 1px solid var(--border);
-
-    border-bottom: none;
-
-    border-radius: 18px 18px 0 0;
-
-    box-shadow:
-        0 10px 40px rgba(0,0,0,.35);
-
-}
-
-
-.brand {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-}
-
-
-.brand-icon {
-
-    width: 42px;
-    height: 42px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 12px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--cyan),
-            var(--purple)
-        );
-
-    color: #05070d;
-
-    font-size: 22px;
-
-    box-shadow:
-        0 0 25px rgba(77,246,255,.25);
-
-}
-
-
-.brand h1 {
-
-    font-size: 15px;
-
-    letter-spacing: .16em;
-
-}
-
-
-.brand span {
-
-    color: var(--muted);
-
-    font-size: 8px;
-
-    letter-spacing: .2em;
-
-}
-
-
-.hud-stats {
-
-    display: flex;
-
-    gap: 35px;
-
-}
-
-
-.stat {
-
-    text-align: center;
-
-}
-
-
-.stat span {
-
-    display: block;
-
-    color: var(--muted);
-
-    font-size: 8px;
-
-    letter-spacing: .18em;
-
-}
-
-
-.stat strong {
-
-    display: block;
-
-    margin-top: 3px;
-
-    font-size: 17px;
-
-}
-
-
-.pause-btn {
-
-    justify-self: end;
-
-    width: 42px;
-    height: 42px;
-
-    border-radius: 11px;
-
-    border: 1px solid var(--border);
-
-    background: var(--panel2);
-
-    color: var(--text);
-
-    cursor: pointer;
-
-    font-weight: 900;
-
-    transition: .2s;
-
-}
-
-
-.pause-btn:hover {
-
-    border-color: var(--cyan);
-
-    color: var(--cyan);
-
-}
-
-
-/* =========================================
+/* =========================================================
    GAME WRAPPER
-========================================= */
+   ========================================================= */
 
-.game-wrapper {
-
+#gameWrapper {
     position: relative;
+
+    width: 100vw;
+    height: 100vh;
 
     overflow: hidden;
 
-    border-left: 1px solid var(--border);
-
-    border-right: 1px solid var(--border);
-
-    background: #05070c;
-
+    background: var(--ink);
 }
 
 
+/* =========================================================
+   CANVAS
+   ========================================================= */
+
 #gameCanvas {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
 
     display: block;
 
-    width: 100%;
-
-    height: auto;
-
-    min-height: 560px;
-
-    background: #05070c;
+    background: var(--ink);
 
     cursor: crosshair;
-
 }
 
 
-/* =========================================
-   WAVE MESSAGE
-========================================= */
+/* =========================================================
+   GENERAL SCREEN
+   ========================================================= */
 
-.wave-message {
-
+.screen {
     position: absolute;
 
-    top: 38%;
+    inset: 0;
 
-    left: 50%;
+    z-index: 20;
 
-    transform: translate(-50%, -50%);
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background:
+        rgba(23, 22, 19, 0.88);
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+
+.screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SCREEN INNER PANEL
+   ========================================================= */
+
+.screen-content {
+    width: min(680px, 94vw);
+
+    padding: 44px 42px;
 
     text-align: center;
 
-    pointer-events: none;
+    background:
+        var(--cream);
 
-    opacity: 0;
+    color: var(--ink);
 
-    transition: opacity .25s;
+    border:
+        4px solid var(--ink);
 
+    box-shadow:
+        12px 12px 0 var(--terracotta);
+
+    position: relative;
 }
 
 
-.wave-message.show {
+/* Decorative corner */
 
-    opacity: 1;
-
-}
-
-
-.wave-message .small {
-
-    color: var(--cyan);
-
-    font-size: 12px;
-
-    letter-spacing: .4em;
-
-}
-
-
-.wave-message #waveNumber {
-
-    font-size: 80px;
-
-    font-weight: 900;
-
-    line-height: .9;
-
-    text-shadow:
-        0 0 30px rgba(77,246,255,.5);
-
-}
-
-
-.wave-message #waveDescription {
-
-    color: var(--muted);
-
-    font-size: 11px;
-
-    letter-spacing: .25em;
-
-    margin-top: 10px;
-
-}
-
-
-/* =========================================
-   PLAYER HUD
-========================================= */
-
-.player-hud {
+.screen-content::before,
+.screen-content::after {
+    content: "";
 
     position: absolute;
 
-    bottom: 18px;
+    width: 20px;
+    height: 20px;
 
-    left: 18px;
+    border-color: var(--ink);
 
-    width: 300px;
+    pointer-events: none;
+}
 
-    padding: 14px;
 
-    background:
-        rgba(8,12,21,.88);
+.screen-content::before {
+    top: 12px;
+    left: 12px;
+
+    border-top: 3px solid;
+    border-left: 3px solid;
+}
+
+
+.screen-content::after {
+    right: 12px;
+    bottom: 12px;
+
+    border-right: 3px solid;
+    border-bottom: 3px solid;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.game-title {
+    font-size: clamp(42px, 8vw, 84px);
+
+    line-height: 0.9;
+
+    font-weight: 700;
+
+    letter-spacing: -0.07em;
+
+    text-transform: uppercase;
+
+    color: var(--ink);
+
+    margin-bottom: 12px;
+}
+
+
+.game-title span {
+    display: block;
+
+    color: var(--terracotta);
+
+    font-size: 0.55em;
+
+    letter-spacing: 0.12em;
+
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.game-subtitle {
+    max-width: 520px;
+
+    margin: 18px auto 28px;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.06em;
+
+    color: #5b5549;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+button {
+    border: none;
+
+    font-family:
+        "Space Grotesk",
+        Arial,
+        sans-serif;
+
+    cursor: pointer;
+}
+
+
+.primary-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 230px;
+
+    padding: 15px 26px;
+
+    background: var(--terracotta);
+
+    color: var(--cream);
 
     border:
-        1px solid var(--border);
+        3px solid var(--ink);
 
-    border-radius: 14px;
+    box-shadow:
+        6px 6px 0 var(--ink);
 
-    backdrop-filter: blur(10px);
+    font-size: 16px;
 
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease,
+        background 0.12s ease;
 }
 
 
-.health-section,
-.shield-section,
-.dash-section {
+.primary-button:hover {
+    background: var(--rust);
 
-    margin-bottom: 10px;
+    transform:
+        translate(2px, 2px);
 
+    box-shadow:
+        4px 4px 0 var(--ink);
 }
 
 
-.dash-section {
+.primary-button:active {
+    transform:
+        translate(6px, 6px);
 
-    margin-bottom: 0;
-
+    box-shadow:
+        0 0 0 var(--ink);
 }
 
 
-.hud-label {
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
+
+.secondary-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 200px;
+
+    padding: 13px 24px;
+
+    background: transparent;
+
+    color: var(--ink);
+
+    border:
+        3px solid var(--ink);
+
+    font-weight: 700;
+
+    letter-spacing: 0.06em;
+
+    text-transform: uppercase;
+
+    transition:
+        background 0.15s ease,
+        color 0.15s ease;
+}
+
+
+.secondary-button:hover {
+    background: var(--ink);
+
+    color: var(--cream);
+}
+
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.controls {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 26px;
+}
+
+
+.control-chip {
+    padding: 7px 10px;
+
+    border:
+        2px solid var(--ink);
+
+    background: transparent;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.04em;
+}
+
+
+.control-chip strong {
+    color: var(--terracotta);
+}
+
+
+/* =========================================================
+   HUD
+   ========================================================= */
+
+#hud {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 10;
+
+    pointer-events: none;
+
+    padding: 18px;
 
     display: flex;
 
     justify-content: space-between;
 
-    color: var(--muted);
+    align-items: flex-start;
 
-    font-size: 8px;
-
-    letter-spacing: .15em;
-
-    margin-bottom: 5px;
-
+    gap: 16px;
 }
 
 
-.health-bar,
-.shield-bar,
-.dash-bar {
+/* =========================================================
+   HUD GROUP
+   ========================================================= */
 
-    width: 100%;
-
-    height: 6px;
-
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    background: #202633;
-
-}
-
-
-.health-bar div {
-
-    width: 100%;
-
-    height: 100%;
-
-    background: var(--green);
-
-    box-shadow:
-        0 0 10px rgba(93,255,155,.4);
-
-    transition: width .15s;
-
-}
-
-
-.shield-bar div {
-
-    width: 0%;
-
-    height: 100%;
-
-    background: var(--cyan);
-
-    transition: width .15s;
-
-}
-
-
-.dash-bar div {
-
-    width: 100%;
-
-    height: 100%;
-
-    background: var(--purple);
-
-    transition: width .1s;
-
-}
-
-
-/* =========================================
-   WEAPON HUD
-========================================= */
-
-.weapon-hud {
-
-    position: absolute;
-
-    right: 18px;
-
-    bottom: 18px;
-
+.hud-group {
     display: flex;
 
-    align-items: center;
+    gap: 8px;
 
-    gap: 10px;
+    flex-wrap: wrap;
+}
 
-    padding: 12px 16px;
+
+/* =========================================================
+   HUD CARD
+   ========================================================= */
+
+.hud-card {
+    min-width: 92px;
+
+    padding: 9px 12px;
 
     background:
-        rgba(8,12,21,.88);
+        rgba(244, 234, 212, 0.94);
+
+    color: var(--ink);
 
     border:
-        1px solid var(--border);
+        2px solid var(--ink);
 
-    border-radius: 14px;
-
-    backdrop-filter: blur(10px);
-
+    box-shadow:
+        4px 4px 0 rgba(0, 0, 0, 0.35);
 }
 
 
-.weapon-icon {
-
-    width: 35px;
-    height: 35px;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 10px;
-
-    background:
-        rgba(77,246,255,.1);
-
-    color: var(--cyan);
-
-}
-
-
-.weapon-label {
-
+.hud-label {
     display: block;
 
-    color: var(--muted);
+    margin-bottom: 2px;
+
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size: 8px;
 
-    letter-spacing: .15em;
+    font-weight: 500;
 
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    color: #706959;
 }
 
 
-.weapon-hud strong {
+.hud-value {
+    font-family:
+        "DM Mono",
+        monospace;
 
-    font-size: 13px;
+    font-size: 18px;
 
+    font-weight: 500;
+
+    line-height: 1;
 }
 
 
-/* =========================================
-   BOSS BAR
-========================================= */
+/* =========================================================
+   HUD COLOR ACCENTS
+   ========================================================= */
 
-.boss-container {
+.health-card .hud-value {
+    color: var(--olive-dark);
+}
 
+
+.shield-card .hud-value {
+    color: var(--slate-dark);
+}
+
+
+.score-card .hud-value {
+    color: var(--terracotta-dark);
+}
+
+
+.coin-card .hud-value {
+    color: var(--mustard-dark);
+}
+
+
+.weapon-card .hud-value {
+    color: var(--rust-dark);
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+#message {
     position: absolute;
-
-    top: 20px;
 
     left: 50%;
+    top: 50%;
 
-    transform: translateX(-50%);
+    z-index: 15;
 
-    width: min(480px, 60%);
+    transform:
+        translate(-50%, -50%)
+        scale(0.92);
 
-    text-align: center;
+    padding: 12px 22px;
 
-}
+    background: var(--cream);
 
-
-.boss-title {
-
-    color: var(--red);
-
-    font-size: 9px;
-
-    font-weight: 900;
-
-    letter-spacing: .2em;
-
-}
-
-
-.boss-name {
-
-    margin: 3px;
-
-    font-size: 13px;
-
-    font-weight: 900;
-
-    letter-spacing: .15em;
-
-}
-
-
-.boss-bar {
-
-    height: 8px;
-
-    border-radius: 20px;
-
-    background: #25202a;
-
-    overflow: hidden;
-
-}
-
-
-.boss-bar div {
-
-    width: 100%;
-
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--pink),
-            var(--purple)
-        );
-
-}
-
-
-/* =========================================
-   MINIMAP
-========================================= */
-
-.minimap {
-
-    position: absolute;
-
-    right: 18px;
-
-    top: 18px;
-
-    width: 110px;
-    height: 80px;
-
-    background:
-        rgba(7,10,17,.75);
+    color: var(--ink);
 
     border:
-        1px solid var(--border);
-
-    border-radius: 10px;
-
-}
-
-
-.map-title {
-
-    padding: 5px;
-
-    color: var(--muted);
-
-    font-size: 7px;
-
-    letter-spacing: .2em;
-
-}
-
-
-.mini-player {
-
-    position: absolute;
-
-    width: 6px;
-    height: 6px;
-
-    border-radius: 50%;
-
-    background: var(--cyan);
+        3px solid var(--ink);
 
     box-shadow:
-        0 0 8px var(--cyan);
+        6px 6px 0 var(--terracotta);
 
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
 }
 
 
-.mini-enemy {
+#message.show {
+    opacity: 1;
 
-    position: absolute;
-
-    width: 4px;
-    height: 4px;
-
-    border-radius: 50%;
-
-    background: var(--pink);
-
+    transform:
+        translate(-50%, -50%)
+        scale(1);
 }
 
 
-/* =========================================
-   SCREENS
-========================================= */
+/* =========================================================
+   PAUSE SCREEN
+   ========================================================= */
 
-.screen {
+.pause-title,
+.gameover-title {
+    font-size: clamp(38px, 7vw, 64px);
 
-    position: absolute;
+    font-weight: 700;
 
-    inset: 0;
+    letter-spacing: -0.05em;
 
-    display: grid;
-
-    place-items: center;
-
-    background:
-        rgba(3,5,10,.82);
-
-    backdrop-filter: blur(12px);
-
-    z-index: 10;
-
-}
-
-
-.screen-card {
-
-    width: min(470px, 90%);
-
-    padding: 45px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(17,23,38,.97),
-            rgba(7,10,18,.97)
-        );
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 24px;
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.5);
-
-}
-
-
-.logo-symbol {
-
-    font-size: 38px;
-
-    color: var(--cyan);
-
-    text-shadow:
-        0 0 30px var(--cyan);
+    text-transform: uppercase;
 
     margin-bottom: 12px;
-
 }
 
 
-.eyebrow {
-
-    color: var(--cyan);
-
-    font-size: 9px;
-
-    font-weight: 900;
-
-    letter-spacing: .3em;
-
+.pause-title {
+    color: var(--olive-dark);
 }
 
 
-.screen-card h2 {
-
-    margin: 12px 0;
-
-    font-size: 58px;
-
-    line-height: .85;
-
-    letter-spacing: -.05em;
-
+.gameover-title {
+    color: var(--rust);
 }
 
 
-.screen-card h2 span {
-
-    color: transparent;
-
-    -webkit-text-stroke: 1px var(--cyan);
-
-}
-
-
-.description {
-
-    max-width: 340px;
-
-    margin: 20px auto;
-
-    color: var(--muted);
-
-    font-size: 13px;
-
-    line-height: 1.6;
-
-}
-
-
-/* =========================================
-   BUTTONS
-========================================= */
-
-.primary-btn,
-.secondary-btn {
-
-    width: 100%;
-
-    min-height: 50px;
-
-    border-radius: 12px;
-
-    cursor: pointer;
-
-    font-weight: 900;
-
-    letter-spacing: .12em;
-
-    transition: .2s;
-
-}
-
-
-.primary-btn {
-
-    border: 1px solid var(--cyan);
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--cyan),
-            #83baff
-        );
-
-    color: #05070d;
-
-}
-
-
-.primary-btn:hover {
-
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 10px 30px rgba(77,246,255,.2);
-
-}
-
-
-.secondary-btn {
-
-    margin-top: 10px;
-
-    border: 1px solid var(--border);
-
-    background: var(--panel2);
-
-    color: var(--text);
-
-}
-
-
-.hidden {
-
-    display: none !important;
-
-}
-
-
-/* =========================================
-   CONTROLS
-========================================= */
-
-.controls {
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 18px;
-
-    margin-top: 25px;
-
-}
-
-
-.controls div {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 5px;
-
-}
-
-
-.controls span {
-
-    color: var(--muted);
-
-    font-size: 7px;
-
-    letter-spacing: .15em;
-
-}
-
-
-kbd {
-
-    display: inline-block;
-
-    padding: 4px 7px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 5px;
-
-    background: #161c2a;
-
-    color: var(--text);
-
-    font-size: 8px;
-
-    font-family: inherit;
-
-}
-
-
-/* =========================================
-   FINAL STATS
-========================================= */
-
-.final-stats {
-
+/* =========================================================
+   SCORE SUMMARY
+   ========================================================= */
+
+.score-summary {
     display: grid;
 
     grid-template-columns:
@@ -949,172 +641,269 @@ kbd {
 
     gap: 10px;
 
-    margin: 25px 0;
-
+    margin: 26px 0;
 }
 
 
-.final-stats div {
+.summary-item {
+    padding: 15px 10px;
 
-    padding: 15px 8px;
+    border:
+        2px solid var(--ink);
 
-    background: rgba(255,255,255,.03);
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
+    background:
+        rgba(23, 22, 19, 0.06);
 }
 
 
-.final-stats span {
-
+.summary-label {
     display: block;
 
-    color: var(--muted);
+    margin-bottom: 6px;
 
-    font-size: 8px;
+    font-family:
+        "DM Mono",
+        monospace;
 
-    letter-spacing: .15em;
+    font-size: 9px;
 
+    text-transform: uppercase;
+
+    color: #71695c;
 }
 
 
-.final-stats strong {
+.summary-value {
+    font-family:
+        "DM Mono",
+        monospace;
 
-    display: block;
+    font-size: 23px;
 
-    margin-top: 5px;
-
-    font-size: 20px;
-
+    font-weight: 500;
 }
 
 
-/* =========================================
-   FOOTER
-========================================= */
+/* =========================================================
+   PAUSE HINT
+   ========================================================= */
 
-.footer {
+.pause-hint {
+    margin-top: 20px;
 
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 11px;
+
+    color: #6c6558;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.05em;
+}
+
+
+/* =========================================================
+   DECORATIVE STRIPE
+   ========================================================= */
+
+.screen-stripe {
+    width: 100%;
+
+    height: 10px;
+
+    margin-bottom: 26px;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            var(--terracotta) 0,
+            var(--terracotta) 12px,
+            var(--mustard) 12px,
+            var(--mustard) 24px
+        );
+
+    border:
+        2px solid var(--ink);
+}
+
+
+/* =========================================================
+   MINIMAP
+   ========================================================= */
+
+#minimap {
+    position: absolute;
+
+    right: 18px;
+    bottom: 18px;
+
+    width: 145px;
+    height: 100px;
+
+    z-index: 9;
+
+    border:
+        3px solid var(--ink);
+
+    background:
+        rgba(244, 234, 212, 0.82);
+
+    box-shadow:
+        5px 5px 0 rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   GAME OVER ACTIONS
+   ========================================================= */
+
+.screen-actions {
     display: flex;
 
-    justify-content: space-between;
+    justify-content: center;
 
-    padding: 12px 4px;
+    flex-wrap: wrap;
 
-    color: var(--muted);
+    gap: 12px;
 
-    font-size: 8px;
-
-    letter-spacing: .15em;
-
+    margin-top: 22px;
 }
 
 
-/* =========================================
+/* =========================================================
+   SMALL TEXT
+   ========================================================= */
+
+.eyebrow {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    padding: 5px 8px;
+
+    background: var(--ink);
+
+    color: var(--cream);
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
    RESPONSIVE
-========================================= */
+   ========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 760px) {
 
-    #game {
-
-        width: 100%;
-
-        margin: 0;
-
-    }
-
-    .hud {
-
-        border-radius: 0;
-
-        grid-template-columns:
-            1fr auto;
-
-    }
-
-    .hud-stats {
-
-        grid-column: 1 / -1;
-
-        grid-row: 2;
-
-        justify-content: space-around;
-
-    }
-
-    .brand {
-
-        grid-column: 1;
-
-    }
-
-    .pause-btn {
-
-        grid-column: 2;
-
-    }
-
-    #gameCanvas {
-
-        min-height: 500px;
-
-    }
-
-    .player-hud {
-
-        width: 230px;
-
-    }
-
-    .minimap {
-
-        display: none;
-
-    }
-
-    .screen-card {
-
-        padding: 30px 22px;
-
-    }
-
-    .screen-card h2 {
-
-        font-size: 45px;
-
-    }
-
-    .controls {
-
-        gap: 8px;
-
-    }
-
-    .footer {
-
+    #hud {
         padding: 10px;
 
+        gap: 8px;
     }
 
+    .hud-card {
+        min-width: 72px;
+
+        padding: 7px 8px;
+    }
+
+    .hud-value {
+        font-size: 14px;
+    }
+
+    .hud-label {
+        font-size: 7px;
+    }
+
+    #minimap {
+        width: 105px;
+        height: 72px;
+
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .screen-content {
+        padding: 32px 22px;
+
+        box-shadow:
+            7px 7px 0 var(--terracotta);
+    }
+
+    .score-summary {
+        grid-template-columns:
+            1fr 1fr 1fr;
+    }
+
+    .summary-value {
+        font-size: 18px;
+    }
 }
 
 
-/* =========================================
-   REDUCED MOTION
-========================================= */
+@media (max-width: 500px) {
 
-@media (prefers-reduced-motion: reduce) {
-
-    * {
-
-        scroll-behavior: auto !important;
-
-        transition: none !important;
-
+    .hud-group {
+        gap: 5px;
     }
 
+    .hud-card {
+        min-width: 62px;
+    }
+
+    .screen-content {
+        padding: 28px 18px;
+    }
+
+    .game-title {
+        font-size: 46px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        width: 100%;
+    }
+
+    .score-summary {
+        gap: 5px;
+    }
+
+    .summary-item {
+        padding: 11px 5px;
+    }
 }
 
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible {
+    outline:
+        3px solid var(--mustard);
+
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   DISABLE TEXT SELECTION
+   ========================================================= */
+
+#gameWrapper,
+button,
+canvas {
+    user-select: none;
+    -webkit-user-select: none;
+}
